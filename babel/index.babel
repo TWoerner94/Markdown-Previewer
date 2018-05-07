@@ -1,0 +1,37 @@
+class PreviewerContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputText: ''
+    }
+    this.updateText = this.updateText.bind(this);
+  }
+  
+  updateText(e) {
+    this.setState({
+      inputText: e.target.value,
+    });
+  }
+  
+  render() {
+    return (
+      <Previewer handleChange={this.updateText} inputText={this.state.inputText} />
+    );
+  }
+}
+
+const Previewer = (props) => {
+  return (
+    <div>
+      <h1 className='heading'>Markdown Previewer</h1>
+      <div className='previewer'>
+        <textarea className='text-input' value={props.inputText} onChange={props.handleChange} />
+        <div className='text-output' dangerouslySetInnerHTML={{__html: marked(props.inputText)}}></div>
+      </div>
+    </div>
+  )
+}
+
+
+
+ReactDOM.render(<PreviewerContainer />, document.getElementById('app'));
