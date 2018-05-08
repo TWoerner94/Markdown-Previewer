@@ -50,7 +50,7 @@ var Previewer = function Previewer(props) {
     React.createElement(
       'div',
       { className: 'previewer' },
-      React.createElement('textarea', { className: 'text-input', value: props.inputText, onChange: props.handleChange }),
+      React.createElement('textarea', { className: 'text-input', value: props.inputText, onChange: props.handleChange, placeholder: 'Enter text here...' }),
       React.createElement('div', { className: 'text-output', dangerouslySetInnerHTML: { __html: marked(props.inputText) } })
     )
   );
